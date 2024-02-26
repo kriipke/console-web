@@ -36,8 +36,9 @@ const Header = () => {
       <header className="bg-white h-20">
         <nav className="h-full flex justify-between container items-center">
           <div>
-            <Link to="/" className="text-ct-dark-600 text-2xl font-semibold">
-              CodevoWeb
+            <Link to="/" className="site-header text-ct-dark-600 text-2xl font-semibold">
+              <img className="site-logo" height="32" width="32" src="/logo.svg" />
+              <span className="site-title">GitOps Console</span>
             </Link>
           </div>
           <ul className="flex items-center gap-4">

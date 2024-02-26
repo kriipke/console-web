@@ -5,16 +5,24 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    borderRadius: {
+      'none': '0',
+      'sm': '.125rem',
+      DEFAULT: '.5rem',
+      'lg': '.5rem',
+      'xl': '.8rem',
+      '2xl': '.5rem',
+    },
     extend: {
       colors: {
         'ct-dark-600': '#222',
-        'ct-dark-200': '#e5e7eb',
+        'ct-dark-200': '#666',
         'ct-dark-100': '#f5f6f7',
-        'ct-blue-600': '#2363eb',
-        'ct-yellow-600': '#f9d13e',
+        'ct-blue-600': '#e9e9e9',
+        'ct-yellow-600': 'rgba(241, 196, 15, 1)',
       },
       fontFamily: {
-        Poppins: ['Poppins, sans-serif'],
+        OpenSans: ['Open Sans, sans-serif'],
       },
       container: {
         center: true,

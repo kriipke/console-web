@@ -97,7 +97,7 @@ const RegisterPage = () => {
       ) : (
         <div className="w-full">
           <h1 className="text-4xl xl:text-6xl text-center font-[600] text-ct-yellow-600 mb-4">
-            Welcome to CodevoWeb!
+            Welcome to GitOps Console!
           </h1>
           <h2 className="text-lg text-center mb-4 text-ct-dark-200">
             Sign Up To Get Started!
