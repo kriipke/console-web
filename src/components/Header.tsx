@@ -4,10 +4,65 @@ import useStore from "../store";
 import Spinner from "./Spinner";
 import { logoutUserFn } from "../api/authApi";
 import { useMutation } from "@tanstack/react-query";
+import { Menu } from 'antd';
+import type { MenuProps } from "antd";
 
 const Header = () => {
   const store = useStore();
   const user = store.authUser;
+
+  const items: MenuProps["items"] = [
+    {
+      label: <a href="/clusters">Clusters</a>,
+      key: "clusters",
+    },
+    {
+      label: <a href="/environments">Environments</a>,
+      key: "environments",
+    },
+    {
+      label: <a href="/apps">Apps</a>,
+      key: "apps",
+    },
+  ];
+
+  const userMenu: MenuProps["items"] = ((user) => {
+    if (user) { 
+      return [
+        {
+          label: <a href="/">Home</a>,
+          key: "home",
+        },
+        {
+          label: <a href="/profile">Profile</a>,
+          key: "profile",
+        },
+        {
+          label: <li className="cursor-pointer" onClick={handleLogout}>Logout</li>,
+          key: "logout",
+        },
+      ];
+    };
+
+    if (!user) { 
+      return [
+        {
+          label: <a href="/">Home</a>,
+          key: "home",
+        },
+        {
+          label: <a href="/register">Register</a>,
+          key: "register",
+        },
+        {
+          label: <a href="/login">Login</a>,
+          key: "login",
+        },
+      ];
+    }
+  })(user);
+
+
 
   const { mutate: logoutUser } = useMutation(() => logoutUserFn(), {
     onMutate(variables) {
@@ -27,55 +82,46 @@ const Header = () => {
     },
   });
 
+
+  const onClick: MenuProps["onClick"] = (e: any) => {
+    console.log("click ", e);
+    store.currentNode(e.key)
+  };
+
   const handleLogout = () => {
     logoutUser();
   };
 
   return (
     <>
-      <header className="bg-white h-20">
+      <header className="bg-white h-15">
+
         <nav className="h-full flex justify-between container items-center">
-          <div>
+
+          <div className="flex">
             <Link to="/" className="site-header text-ct-dark-600 text-2xl font-semibold">
               <img className="site-logo" height="32" width="32" src="/logo.svg" />
-              <span className="site-title">GitOps Console</span>
             </Link>
+
+            <Menu
+              onClick={onClick}
+              selectedKeys={store.currentNode}
+              mode="horizontal"
+              items={items}
+            />
           </div>
-          <ul className="flex items-center gap-4">
-            <li>
-              <Link to="/" className="text-ct-dark-600">
-                Home
-              </Link>
-            </li>
-            {!user && (
-              <>
-                <li>
-                  <Link to="/register" className="text-ct-dark-600">
-                    SignUp
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/login" className="text-ct-dark-600">
-                    Login
-                  </Link>
-                </li>
-              </>
-            )}
-            {user && (
-              <>
-                <li>
-                  <Link to="/profile" className="text-ct-dark-600">
-                    Profile
-                  </Link>
-                </li>
-                <li className="cursor-pointer" onClick={handleLogout}>
-                  Logout
-                </li>
-              </>
-            )}
-          </ul>
+
+          <div className="flex">
+            <Menu
+              selectedKeys={"home"}
+              mode="horizontal"
+              items={userMenu}
+            />
+          </div>
         </nav>
+
       </header>
+
       <div className="pt-4 pl-2 bg-ct-blue-600 fixed">
         {store.requestLoading && <Spinner color="text-ct-yellow-600" />}
       </div>
