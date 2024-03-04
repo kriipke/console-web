@@ -7,7 +7,6 @@ import type { DescriptionsProps } from 'antd'
 
 const ProfilePage = () => {
   const store = useStore()
-
   const { data } = useQuery(['getMe'], getMeFn, {
     select(data) {
       return data.data.user
@@ -33,6 +32,7 @@ const ProfilePage = () => {
   })
 
   const user = store.authUser
+  console.log("USER:", user)
 
   const items: DescriptionsProps['items'] = [
     {

@@ -27,10 +27,15 @@ export interface IUserResponse {
   };
 }
 
+export interface IClusterMultiResponse {
+  status: string;
+  results: int;
+  data: []ICluster;
+}
+
 export interface IClusterResponse {
   status: string;
-  data: {
-    cluster: ICluster;
+  data: ICluster;
   };
 }
 
@@ -45,4 +50,3 @@ export interface ICluster {
   updatedAt: string;
   __v: number;
 }
-

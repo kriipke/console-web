@@ -9,6 +9,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useStore from "../store";
 import { loginUserFn } from "../api/authApi";
 import { useMutation } from "@tanstack/react-query";
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Space, Button, Checkbox, Form, Input } from 'antd';
 
 const loginSchema = object({
   email: string()
@@ -82,43 +84,48 @@ const LoginPage = () => {
   };
 
   return (
-    <section className="bg-ct-blue-600 min-h-screen grid place-items-center">
-      <div className="w-full">
-        <h1 className="text-4xl xl:text-6xl text-center font-[600] text-ct-yellow-600 mb-4">
-          Welcome Back
-        </h1>
-        <h2 className="text-lg text-center mb-4 text-ct-dark-200">
-          Login to have access
-        </h2>
-        <FormProvider {...methods}>
-          <form
-            onSubmit={handleSubmit(onSubmitHandler)}
-            className="max-w-md w-full mx-auto overflow-hidden shadow-lg bg-ct-dark-200 rounded-2xl p-8 space-y-5"
-          >
-            <FormInput label="Email" name="email" type="email" />
-            <FormInput label="Password" name="password" type="password" />
+    
+	<Space direction="vertical" className="items-center" justify="Center" size="middle" style={{ display: 'flex' }}>
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{ remember: true }}
+        onFinish={onSubmitHandler}
+      >
+      <Form.Item
+        name="email"
+        rules={[{ required: true, message: 'Please input your Username!' }]}
+      >
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+      </Form.Item>
+      <Form.Item
+        name="password"
+        rules={[{ required: true, message: 'Please input your Password!' }]}
+      >
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Password"
+        />
+      </Form.Item>
+      <Form.Item>
+        <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
 
-            <div className="text-right">
-              <Link to="/forgotpassword" className="">
-                Forgot Password?
-              </Link>
-            </div>
-            <LoadingButton
-              loading={store.requestLoading}
-              textColor="text-ct-blue-600"
-            >
-              Login
-            </LoadingButton>
-            <span className="block">
-              Need an account?{" "}
-              <Link to="/register" className="text-ct-blue-600">
-                Sign Up Here
-              </Link>
-            </span>
-          </form>
-        </FormProvider>
-      </div>
-    </section>
+        <a className="login-form-forgot" href="/forgotpassword">
+          Forgot password
+        </a>
+      </Form.Item>
+
+      <Form.Item>
+        <Button type="primary" htmlType="submit" className="login-form-button">
+          Log in
+        </Button>
+        Or <a href="">register now!</a>
+      </Form.Item>
+    </Form>
+  </Space>
   );
 };
 

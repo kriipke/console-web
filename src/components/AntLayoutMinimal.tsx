@@ -2,8 +2,7 @@ import { Outlet } from "react-router-dom"
 import Header from "./Header"
 import React from "react";
 import useStore from "../store";
-import { getAllClustersFn } from "../api/authApi";
-import { ConfigProvider, Menu, Layout, theme } from "antd";
+import { Menu, Layout, theme } from "antd";
 import { LaptopOutlined, NotificationOutlined, KubernetesOutlined  } from '@ant-design/icons';
 import { useQuery } from "@tanstack/react-query";
 
@@ -27,22 +26,12 @@ const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
 //       }),
 // }
 //
-//
-
-var clusters = getAllClustersFn();
-
-console.log(clusters)
-
-//const { data, results, status } = useQuery("getClusters", getAllClustersFn)
-//var clusters = getAllClustersFn()
-
-
 const sidebarNavItems: MenuProps['items'] = [
     {
           key: `clusters`,
           icon: React.createElement(KubernetesOutlined),
           label: `Clusters`,
-          children: clusters
+          children: items1
     },
     {
           key: `apps`,
@@ -54,7 +43,7 @@ const sidebarNavItems: MenuProps['items'] = [
 
 const { Content, Footer, Sider  } = Layout;
 
-const AntLayout = ()=> {
+const AntLayoutMinimal = ()=> {
     const store = useStore();
 
     const {
@@ -62,40 +51,19 @@ const AntLayout = ()=> {
     } = theme.useToken();
 
     return <>
-	<ConfigProvider
-	  theme={{
-		token: {
-		  // Seed Token
-		  colorPrimary: '#00b96b',
-		  borderRadius: 2,
-
-		  // Alias Token
-		  colorBgContainer: '#f6ffed',
-		},
-	  }}
-	>
     <Header/>
-    <Content className="container" style={{ padding: '0 48px' }}>
+    <h1>MINIMAL</h1>
+    <Content className="container"style={{ padding: '0 48px' }}>
       <Layout
         style={{ padding: '24px 0', background: colorBgContainer, borderRadius: borderRadiusLG }}
       >
-        <Sider style={{ background: colorBgContainer }} width={200}>
-      	<Menu
-      	  mode="inline"
-      	  defaultSelectedKeys={['clusters']}
-      	  defaultOpenKeys={['clusters']}
-      	  style={{ height: '100%' }}
-      	  items={sidebarNavItems}
-      	/>
-        </Sider>
         <Content style={{ padding: '0 24px', minHeight: 280 }}>
           <Outlet />
         </Content>
       </Layout>
     </Content>
-    </ConfigProvider>
   
     </>
 }
 
-export default AntLayout
+export default AntLayoutMinimal

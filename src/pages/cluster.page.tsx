@@ -4,11 +4,19 @@ import { getClusterFn } from '../api/authApi'
 import useStore from '../store'
 import { Space, Card, Descriptions } from 'antd'
 import type { DescriptionsProps } from 'antd'
+import { useLocation } from "react-router-dom";
 
 const ClusterPage = () => {
   const store = useStore()
+  
 
-  const { data } = useQuery(['getCluster'], getClusterFn, {
+  const location = useLocation();
+  const { hash, pathname, search } = location;
+  var clusterId = pathname.split( '/' ).slice(-1);
+
+
+
+  const { data } = useQuery(['getCluster', clusterId], getClusterFn, {
     select(data) {
       return data.data
     },
@@ -48,7 +56,7 @@ const ClusterPage = () => {
   return (
    <Space direction="vertical" size="large" style={{ display: 'flex'  }}>
         <Card title="Card" size="small">
-          <Descriptions title="Cluster Info" items={items} />
+          <Descriptions title={cluster?.name} layout="vertical" items={items} />
         </Card>
    </Space>
   );
