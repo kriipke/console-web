@@ -1,8 +1,9 @@
 import type { RouteObject } from "react-router-dom";
-import Layout from "../components/Layout";
+import AntLayout from "../components/AntLayout";
 import EmailVerificationPage from "../pages/emailverification.page";
 import ForgotPasswordPage from "../pages/forgotpassword.page";
 import HomePage from "../pages/home.page";
+import ClusterPage from "../pages/cluster.page";
 import LoginPage from "../pages/login.page";
 import ProfilePage from "../pages/profile.page";
 import RegisterPage from "../pages/register.page";
@@ -42,11 +43,20 @@ const authRoutes: RouteObject = {
 
 const normalRoutes: RouteObject = {
   path: "*",
-  element: <Layout />,
+  element: <AntLayout />,
   children: [
     {
       index: true,
       element: <HomePage />,
+    },
+    {
+      path: "clusters",
+      children: [
+        {
+          path: "",
+          element: <ClusterPage clusterId="f132347e-a50a-4ba1-8e55-a2258d784140"   />,
+        },
+      ],
     },
     {
       path: "profile",

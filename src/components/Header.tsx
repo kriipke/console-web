@@ -7,6 +7,10 @@ import { useMutation } from "@tanstack/react-query";
 import { Menu } from 'antd';
 import type { MenuProps } from "antd";
 
+const handleLogout = () => {
+  logoutUser();
+};
+
 const Header = () => {
   const store = useStore();
   const user = store.authUser;
@@ -88,9 +92,6 @@ const Header = () => {
     store.currentNode(e.key)
   };
 
-  const handleLogout = () => {
-    logoutUser();
-  };
 
   return (
     <>
@@ -105,7 +106,7 @@ const Header = () => {
 
             <Menu
               onClick={onClick}
-              selectedKeys={store.currentNode}
+              selectedKeys={store.currentCluster}
               mode="horizontal"
               items={items}
             />

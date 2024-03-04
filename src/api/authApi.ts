@@ -49,3 +49,10 @@ export const resetPasswordFn = async (data: ResetPasswordInput, resetCode: strin
   const response = await authApi.patch<GenericResponse>(`auth/resetpassword/${resetCode}`, data);
   return response.data;
 };
+
+export const getClusterFn = async (clusterId: string) => {
+  // const cId = clusterId["clusterId"]
+  const cId = "f132347e-a50a-4ba1-8e55-a2258d784140"
+  const response = await authApi.get<IClusterResponse>(`clusters/${cId}`);
+  return response.data;
+};

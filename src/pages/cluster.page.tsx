@@ -1,51 +1,57 @@
-import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-toastify";
-import { getMeFn } from "../api/authApi";
-import useStore from "../store";
+import { useQuery } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
+import { getClusterFn } from '../api/authApi'
+import useStore from '../store'
+import { Space, Card, Descriptions } from 'antd'
+import type { DescriptionsProps } from 'antd'
 
-const ClusterPage = ({clusterId}) => {
-  const store = useStore();
+const ClusterPage = () => {
+  const store = useStore()
 
-  const { data } = useQuery(["getCluster"], getCluterFn(clusterId), {
+  const { data } = useQuery(['getCluster'], getClusterFn, {
     select(data) {
-      return data.data;
+      return data.data
     },
     onSuccess(data) {
-      store.setRequestLoading(false);
+      console.log("getClusterFn success! data:", data)
     },
     onError(error) {
-      store.setRequestLoading(false);
-      if (Array.isArray((error as any).response.data.error)) {
-        (error as any).response.data.error.forEach((el: any) =>
-          toast.error(el.message, {
-            position: "top-right",
-          })
-        );
-      } else {
-        toast.error((error as any).response.data.message, {
-          position: "top-right",
-        });
-      }
+      console.log("getClusterFn faiure! error:", error)
     },
-  });
+  })
 
-  const user = store.authUser;
+  const cluster = data
+
+  const items: DescriptionsProps['items'] = [
+    {
+      key: '1',
+      label: 'ID',
+      children: cluster?.id,
+    },
+    {
+      key: '2',
+      label: 'Name',
+      children: cluster?.name,
+    },
+    {
+      key: '3',
+      label: 'API Server Host',
+      children: cluster?.api_server_host,
+    },
+    {
+      key: '4',
+      label: 'API Server Port',
+      children: cluster?.api_server_port,
+    },
+  ]
 
   return (
-    <section className="bg-ct-blue-600  min-h-screen pt-20">
-      <div className="max-w-4xl mx-auto bg-ct-dark-100 rounded-md h-[20rem] flex justify-center items-center">
-        <div>
-          <p className="text-5xl font-semibold">Profile Page</p>
-          <div className="mt-8">
-            <p className="mb-4">ID: {user?.id}</p>
-            <p className="mb-4">Name: {user?.name}</p>
-            <p className="mb-4">Email: {user?.email}</p>
-            <p className="mb-4">Role: {user?.role}</p>
-          </div>
-        </div>
-      </div>
-    </section>
+   <Space direction="vertical" size="large" style={{ display: 'flex'  }}>
+        <Card title="Card" size="small">
+          <Descriptions title="Cluster Info" items={items} />
+        </Card>
+   </Space>
   );
-};
+}
 
-export default ProfilePage;
+export default ClusterPage

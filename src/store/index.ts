@@ -4,19 +4,20 @@ import { IUser } from '../api/types';
 type Store = {
   authUser: IUser | null;
   requestLoading: boolean;
-  currentNode: string;
+  currentCluster: string;
   setAuthUser: (user: IUser | null) => void;
   setRequestLoading: (isLoading: boolean) => void;
-  setCurrentNode: (current: string) => void;
+  setCurrentCluster: (clusterId: string) => void;
 };
 
 const useStore = create<Store>((set) => ({
   authUser: null,
   requestLoading: false,
+  currentCluster: null,
   setAuthUser: (user) => set((state) => ({ ...state, authUser: user })),
-  setCurrentNode: (current) => set((state) => ({ ...state, currentNode: current })),
+  setCurrentCluster: (clusterId) => set((state) => ({ ...state, currentCluster: clusterId })),
   setRequestLoading: (isLoading) =>
     set((state) => ({ ...state, requestLoading: isLoading })),
 }));
 
-export default useStore;
+export default useStore

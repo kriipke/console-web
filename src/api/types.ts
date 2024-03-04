@@ -26,3 +26,23 @@ export interface IUserResponse {
     user: IUser;
   };
 }
+
+export interface IClusterResponse {
+  status: string;
+  data: {
+    cluster: ICluster;
+  };
+}
+
+export interface ICluster {
+  name: string;
+  api_server_host: string;
+  api_server_port: string;
+  added_by: string;
+  _id: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
