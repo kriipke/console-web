@@ -19,3 +19,9 @@
 ## Roadmap
 
 https://github.com/ant-design/ant-design
+
+## References 
+
+![React Query and Axios: User Registration and Email Verification](https://codevoweb.com/wp-content/uploads/2022/09/React-Query-and-Axios-User-Registration-and-Email-Verification.webp)
+
+Read the entire article here: [https://codevoweb.com/forgot-reset-passwords-with-react-query-and-axios](https://codevoweb.com/forgot-reset-passwords-with-react-query-and-axios)
