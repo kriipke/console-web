@@ -29,14 +29,13 @@ export interface IUserResponse {
 
 export interface IClusterMultiResponse {
   status: string;
-  results: int;
+  results: number;
   data: []ICluster;
 }
 
 export interface IClusterResponse {
   status: string;
   data: ICluster;
-  };
 }
 
 export interface ICluster {
