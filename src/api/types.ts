@@ -30,7 +30,7 @@ export interface IUserResponse {
 export interface IClusterMultiResponse {
   status: string;
   results: number;
-  data: []ICluster;
+  data: ICluster[];
 }
 
 export interface IClusterResponse {
