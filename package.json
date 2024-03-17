@@ -13,7 +13,7 @@
     "@hookform/resolvers": "^2.9.8",
     "@tanstack/react-query": "^4.3.4",
     "@tanstack/react-query-devtools": "^4.3.5",
-    "antd": "^5.14.2",
+    "antd": "^5.15.3",
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
