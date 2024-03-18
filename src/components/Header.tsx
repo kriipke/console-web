@@ -93,7 +93,7 @@ const Header = () => {
 
           <div className="flex">
             <Link to="/console" className="site-header text-ct-dark-600 text-2xl font-semibold">
-              <img className="site-logo" height="32" width="32" src="/logo.svg" />
+              <img className="site-logo" height="32" width="32" src="/logo.png" />
             </Link>
           </div>
           <div className="flex">
