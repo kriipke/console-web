@@ -3,18 +3,7 @@ kind: Kustomization
 metadata:
   name: console-web-base
 
-patchesStrategicMerge:
-- patch.yaml
 
-namespace: console-dev
-
-images:
-- name: console-api
-  newName: ghcr.io/kriipke/console-api
-  newTag: develop
-- name: console-web
-  newName: ghcr.io/kriipke/console-web
-  newTag: develop
 
 resources:
 - deployment.yaml
