@@ -52,7 +52,6 @@ const AntLayoutMinimal = ()=> {
 
     return <>
     <Header/>
-    <h1>MINIMAL</h1>
     <Content className="container"style={{ padding: '0 48px' }}>
       <Layout
         style={{ padding: '24px 0', background: colorBgContainer, borderRadius: borderRadiusLG }}
