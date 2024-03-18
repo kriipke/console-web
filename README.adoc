@@ -40,7 +40,7 @@ ifdef::env-github[]
   
   <!-- REPLACE THE FOLLOWING WITH YOUR REPOSITORY/PROJECT TITLE -->
   <h3 align="center">GitOps Console</h3>
-  
+  <h4 align="center">Console Frontend</h4>  
   <p align="center">
   
     <!-- REPLACE THE FOLLOWING WITH YOUR REPOSITORY/PROJECT'S SHORT DESCRIPTION -->
