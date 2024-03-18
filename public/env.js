@@ -1,4 +1,3 @@
 window.env = {
-  API_BACKEND_HOST: '__API_BACKEND_HOST__',
-  API_BACKEND_PORT: '__API_BACKEND_PORT__',
+  API_BASE_URL: '__API_BASE_URL__',
 }
