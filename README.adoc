@@ -1,4 +1,4 @@
-= GitOps Console image::docs/logo.png[20px,20px]
+= GitOps Console: Web App
 :doctype: article
 :description: A README template written in AsciiDoc markup
 :license-type: MIT
@@ -36,11 +36,10 @@ ifdef::env-github[]
   <a href="https://github.com/kriipke/console-api">
     
     <!-- REPLACE THE PLACEHOLDER LOGO WITH YOUR OWN LOGO AND ADJUST THE SIZE ACCORDINGLY -->
-    <img src="docs/logo.png" alt="Logo" width="30%" height="30%"></a>
+    <img src="docs/logo.png" alt="Logo" width="20%" height="20%"></a>
   
   <!-- REPLACE THE FOLLOWING WITH YOUR REPOSITORY/PROJECT TITLE -->
-  <h3 align="center">GitOps Console</h3>
-  
+  <h3 align="center">GitOps Console</h3><h4 align="center">Frontend Web App</h4>  
   <p align="center">
   
     <!-- REPLACE THE FOLLOWING WITH YOUR REPOSITORY/PROJECT'S SHORT DESCRIPTION -->
