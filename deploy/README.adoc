@@ -1,0 +1,6 @@
+= GitOps Console on Kubernetes
+
+== References
+
+* https://github.com/kubernetes-sigs/kustomize/tree/master/examples/ldap/base[kustomization `base` reference]:: 
+* https://github.com/kubernetes-sigs/kustomize/tree/master/examples/ldap/overlays[kustomization `overlays` reference]:: 

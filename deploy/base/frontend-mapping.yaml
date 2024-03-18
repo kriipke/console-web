@@ -5,6 +5,6 @@ metadata:
   name: console-frontend
   namespace: console
 spec:
-  host: console.kriipke.io
+  host: "*"
   prefix: /
   service: console-web.console:3000
