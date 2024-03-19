@@ -40,14 +40,10 @@ jobs:
             type=schedule
             type=ref,event=branch
             type=ref,event=pr
-            type=ref,event=push
             type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha
-            type=sha,prefix={{branch}}-
+            type=raw,value={{branch}}
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
-            type=schedule
+            
       - name: debug vars
         run: echo HEADREF Dockerfile.${{ github.head_ref }}
       - name: debug vars
