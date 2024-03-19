@@ -44,7 +44,8 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=sha
-            
+            type=sha,prefix={{branch}}-
+
       - name: debug vars
         run: echo HEADREF Dockerfile.${{ github.head_ref }}
 
