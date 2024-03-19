@@ -1,5 +1,5 @@
-FROM node:20-alpine as build
+FROM node:20-alpine
 WORKDIR /app
-COPY . .
+ADD . .
 RUN yarn install
 CMD ["yarn", "dev"]
