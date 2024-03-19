@@ -44,13 +44,20 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=sha
+            
+      - name: debug vars
+        run: echo HEADREF Dockerfile.${{ github.head_ref }}
+
+
+      - name: debug ls
+        run: ls ./docker/Dockerfile.${{ github.head_ref }}
 
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: docker
-          file: Dockerfile.${{ github.head_ref }}
+          context: ./docker
+          file: ./docker/Dockerfile.${{ github.head_ref }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
