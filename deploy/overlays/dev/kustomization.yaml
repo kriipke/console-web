@@ -13,5 +13,5 @@ resources:
   - ../../base
 patches:
   - path: deployment.yaml
-namePrefix: goc-
+namePrefix: gitops-
 namespace: console-dev
